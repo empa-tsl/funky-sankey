@@ -15,3 +15,5 @@ Steps in the scripts Charts_MATERIAL.tex :
 - then create a function to extract the appropriate columns of the file flow.txt
 - then import the tikzpicture.tex script which does the design job.
 - in a last step, a title is displayed on top.
+
+A result example is shown in Charts_Plastic.pdf.
