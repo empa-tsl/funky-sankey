@@ -1,0 +1,17 @@
+\input{header}
+
+% For importing data
+\readdef{flow.txt}\myflowdef
+
+\input{dataimportation}
+
+%% For importing data
+\newcommand{\tottext}[1]{\csname#1textEPS\endcsname}
+\newcommand{\totwidth}[1]{\csname#1widthEPS\endcsname}
+
+\input{tikzpicture}
+
+\node[font=\Huge](title) at (0,20.9){\textbf{EPS in Switzerland}};
+
+\end{tikzpicture}
+\end{document}

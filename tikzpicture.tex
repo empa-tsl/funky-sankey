@@ -1,0 +1,616 @@
+\begin{tikzpicture}[
+		mod1/.style ={rectangle,fill = black!5, draw=black, text width = 3 cm, text centered, minimum height=1.5cm, font=\large},
+		mod2/.style ={mod1,fill = green!20},
+		mod2a/.style ={mod1,fill = red!50!orange!20},
+		mod2b/.style ={mod1,fill = myblue!20},
+		mod2c/.style ={mod1,fill = myblue!30!red!20},
+		mod2d/.style ={mod1,fill = yellow!50!red!20},
+		mod2e/.style ={mod1,fill = myblue!70!red!20},
+		flow/.style  ={-stealth, line width = 2, rounded corners=6mm, draw=black},
+		flowgrey1/.style	={flow, draw=black!20},
+		flowgrey2/.style	={flow, draw=black!50},
+		flowred/.style	={flow, draw=red},
+		flowred2/.style	={flow, draw=red!30},
+		flowblue/.style	={flow, draw=myblue},
+		flowblue2/.style={flow, draw=mydarkblue},
+		flowblue3/.style={flow, draw=mylightblue},
+		flowpurple/.style={flow, draw=myblue!35!red},
+		flowpurple2/.style={flow, draw=myblue!65!red},
+		flowgreen/.style={flow, draw=mygreen},
+		flowgreen2/.style={flow, draw=mygreen!70!black},
+		flowyellow/.style={flow, draw=yellow!50!red},
+		labs/.style={rectangle, rounded corners,midway,fill = white,draw=black,text centered, line width = 1,scale=.9},
+		totallabs/.style={rectangle, rounded corners,fill = white,draw=black,text centered, line width = 1,scale=1}]
+		
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%% BACKGROUND AND SET-UP %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% figure size
+\draw[draw = white] (-23.2,20.2) rectangle ++(48.4,-32.7) {};
+\draw[draw = black, line width = 1 mm] (-23.2,20.2) rectangle ++(47.4,-32.2) {};
+%\draw[draw = black] (-4.25,20) -- ++(0,-30);
+%\draw[draw = black] (4.25,20) -- ++(0,-30);
+
+% system boundary
+\draw[draw = black, line width = 2 mm, rounded corners, dashed] (3,18.25) rectangle ++(20.5,-29.5) {};
+\draw[draw = black, line width = 2 mm, rounded corners, dashed] (-3,18.25) rectangle ++(-19.5,-29.5) {};
+
+% titles
+\node[font=\huge,text=black](title) at (-13,18.75){\textbf{\textit{Microplastic emission flows}}};
+\node[font=\huge,text=black](title) at (13,18.75){\textbf{\textit{Macroplastic emission flows}}};
+\node[font=\huge,text=red!50!black, text width = 10cm, text centered](title) at (0,19.15){\textbf{\textit{Anthroposphere}} \\ \textbf{\textit{compartments}}};
+
+% grid
+%\draw[step=1cm, draw=black!20] (0,-7) grid (39,20);
+
+
+%\draw[-stealth, line width = 2, decorate, decoration=snake]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%% COMPARTMENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%
+
+\fill[fill = yellow!30!brown!30, rounded corners=4mm] (-2.4,18.25) rectangle (2.4,13.5);
+\node[below right, text height=0.35cm] at (-2.4,18.25) {\textit{  Pre- and post-consumer}};
+
+\fill[fill = yellow!70!brown!30, rounded corners=4mm] (-2.4,13) rectangle (2.4,-5.75);2
+\node[below right, text height=0.35cm] at (-2.4,13) {\textit{  Consumption}};
+
+\node[mod1] (pcons)   at (0,16.75) {Pre-consumer processes} ;
+\node[mod1] (wcoll)   at (0,15)    {Waste coll. and recycling} ;
+
+\node[mod1] (cpack)   at (0,11.5)  {Consumer packaging} ;
+\node[mod1] (ncpack)  at (0,9.75)  {Non-cons. packaging} ;
+\node[mod1] (constr)  at (0,8)     {Construction} ;
+\node[mod1] (auto)    at (0,6.25)  {Automotive} ;
+\node[mod1] (agri)    at (0,4.5)   {Agriculture} ;
+\node[mod1] (pccp)    at (0,2.75)  {PCCP} ;
+\node[mod1] (hygprod) at (0,1)     {Hygiene products} ;
+\node[mod1] (cloth)   at (0,-.75)  {Clothing} ;
+\node[mod1] (hhtext)  at (0,-2.5)  {Household textiles} ;
+\node[mod1] (other)   at (0,-4.25) {Other products} ;
+
+%%
+
+%\fill[fill = black!10, rounded corners=4mm] (-2.4,-6.25) rectangle (2.4,-9.25);
+%\node[below right, text height=0.35cm] at (-2.4,-6.25) {\textit{  Intermediate comp.}};
+
+\node[mod2] (orgcoll) at (0,-7.75)  {Organic waste collection} ;
+
+\node[mod1] (empty)   at (0,-10.25) {Incineration};
+
+%%
+
+\fill[fill = black!10, rounded corners=4mm] (9.6,13.5) rectangle (14.4,-9.25);
+\node[below right, text height=0.35cm] at (9.6,13.5) {\textit{  Intermediate comp.}};
+
+\fill[fill = black!10, rounded corners=4mm] (-8.6,6.5) rectangle (-13.4,-9.25);
+\node[below right, text height=0.35cm] at (-13.4,6.5) {\textit{  Intermediate comp.}};
+
+\node[mod1]  (otg)       at (12,12)      {On-the-go consumption} ;
+\node[mod2a] (litt)      at (12,8)       {Litter} ;
+\node[mod2d] (dump)      at (12,4.5)     {Dumped waste} ;
+\node[mod2b] (wwater)    at (12,0.7)     {Storm and waste water} ;
+\node[mod2]  (comp)      at (12,-7.75)   {Compost and solid digestate} ;
+
+\node[mod2b] (wwaterMP)    at (-11,5)     {Storm and waste water (MP)} ;
+\node[mod2c] (indoorairMP) at (-11,-.75)  {Indoor air (MP)} ;
+\node[mod2e] (airMP)       at (-11,-3)    {Air (MP)} ;
+\node[mod2]  (compMP)      at (-11,-7.75) {Compost and solid digestate (MP)} ;
+
+%%
+
+\fill[fill = green!60!blue!20, rounded corners=4mm] (18.1,16.2) rectangle (22.9,-0.5);
+\node[below right, text height=0.35cm] at (18.1,16.2) {\textit{  Environmental sinks}};
+
+\fill[fill = green!60!blue!20, rounded corners=4mm] (-17.1,12) rectangle (-21.9,3.5);
+\node[below right, text height=0.35cm] at (-21.9,12) {\textit{  Environmental sinks}};
+
+\node[mod2]  (soil)    at (20.5,14.7)  {Soil} ;
+\node[mod2b] (water)   at (20.5,1)   {Water} ;
+
+\node[mod2]  (soilMP)  at (-19.5,10.5) {Soil (MP)} ;
+\node[mod2b] (waterMP) at (-19.5,5)  {Water (MP)} ;
+
+%% total sum in environmental compartments
+\node[totallabs,fill=mygreen!15] (soillab)    at (soil.south)    {\tottext{Total to Soil}} ;
+\node[totallabs,fill=mygreen!15] (soilMPlab)  at (soilMP.south)  {\tottext{Total to Soil (MP)}} ;
+
+\node[totallabs,fill=mydarkblue!10] (waterlab)   at (water.south)   {\tottext{Total to Water}} ;
+\node[totallabs,fill=mydarkblue!10] (waterMPlab) at (waterMP.south) {\tottext{Total to Water (MP)}} ;
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%% PATHWAYS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%% emissions from pre-consumer processes
+
+\ifdim\totwidth{Pre-consumer processes to Water (MP)}pt>0pt%
+\draw[flowblue2, line width=\totwidth{Pre-consumer processes to Water (MP)}]
+	([shift={(0,0.5)}]pcons.west)	
+	-| ([shift={(3.25,0)}]waterMP.east)
+	node[labs,pos=.1,fill=mydarkblue!10] (TextNode) {\tottext{Pre-consumer processes to Water (MP)} t}
+	-- (waterMP.east);
+\fi%
+
+\ifdim\totwidth{Pre-consumer processes to Storm water and wastewater (MP)}pt>0pt%
+\draw[flowblue, line width=\totwidth{Pre-consumer processes to Storm water and wastewater (MP)}]
+	(pcons.west) -- ++(-5.5,0)
+	node[labs,fill=myblue!15,pos=.47] (TextNode) {\tottext{Pre-consumer processes to Storm water and wastewater (MP)} t}
+	|- (wwaterMP.east);
+\fi%
+
+\ifdim\totwidth{Pre-consumer processes to Soil (MP)}pt>0pt%
+\draw[flowgreen, line width=\totwidth{Pre-consumer processes to Soil (MP)}]
+	([shift={(0,-.5)}]pcons.west) -- ++(-4,0)
+	node[labs,pos=.65,fill=mygreen!15] (TextNode) {\tottext{Pre-consumer processes to Soil (MP)} t}
+	|- (soilMP.east);
+\fi%
+
+
+%%%%% waste management and emissions
+\ifdim\totwidth{Waste collection and recycling to Litter}pt>0pt%
+\draw[flowred, line width=\totwidth{Waste collection and recycling to Litter}]
+	([shift={(0,0.3)}]wcoll.east) -- ++(6.25,0)
+	node[labs,pos=.42,fill=red!10] (TextNode) {\tottext{Waste collection and recycling to Litter} t}
+	|- (litt.west);
+\fi%
+
+\ifdim\totwidth{Waste collection and recycling to Soil}pt>0pt%
+\draw[flowgreen, line width=\totwidth{Waste collection and recycling to Soil}]
+	([shift={(0,-.3)}]wcoll.east) -- (soil.west)
+	node[labs,pos=.155,fill=mygreen!10] (TextNode) {\tottext{Waste collection and recycling to Soil} t};
+\fi%
+
+
+\ifdim\totwidth{Waste collection and recycling to Storm water and wastewater (MP)}pt>0pt%
+\draw[flowblue, line width=\totwidth{Waste collection and recycling to Storm water and wastewater (MP)}]
+	([shift={(0,0.5)}]wcoll.west) -- ++(-5.5,0)
+	node[labs,pos=.47,fill=myblue!10] (TextNode) {\tottext{Waste collection and recycling to Storm water and wastewater (MP)} t}
+	|- (wwaterMP.east);
+\fi%
+
+\ifdim\totwidth{Waste collection and recycling to Air (MP)}pt>0pt%
+\draw[flowpurple2, line width=\totwidth{Waste collection and recycling to Air (MP)}]
+	(wcoll.west) -- ++(-4.75,0)
+	node[labs,pos=.54,fill=myblue!35!red!10] (TextNode) {\tottext{Waste collection and recycling to Air (MP)} t}
+	|- (airMP.east);
+\fi%
+
+\ifdim\totwidth{Waste collection and recycling to Soil (MP)}pt>0pt%
+\draw[flowgreen, line width=\totwidth{Waste collection and recycling to Soil (MP)}]
+	([shift={(0,-.5)}]wcoll.west) -- ++(-4,0)
+	node[labs,pos=.64,fill=mygreen!10] (TextNode) {\tottext{Waste collection and recycling to Soil (MP)} t}
+	|- (soilMP.east);
+\fi%
+
+
+%%%%% emissions from consumer packaging
+\ifdim\totwidth{Consumer packaging to On-the-go consumption}pt>0pt%
+\draw[flowgrey2, line width=\totwidth{Consumer packaging to On-the-go consumption}]
+	([shift={(0,0.5)}]cpack.east) -- (otg.west)
+	node[labs,pos=.3] (TextNode) {\tottext{Consumer packaging to On-the-go consumption} t};
+\fi%
+
+\ifdim\totwidth{Consumer packaging to Organic waste collection}pt>0pt%
+\draw[flowgreen2, line width=\totwidth{Consumer packaging to Organic waste collection}]
+	(cpack.east) -- ++(5.5,0)
+	node[labs,pos=.48,fill=mygreen!70!black!20] (TextNode) {\tottext{Consumer packaging to Organic waste collection} t}
+	|- ([shift={(0,1)}]orgcoll.north) -- (orgcoll.north);
+\fi%
+
+\ifdim\totwidth{Consumer packaging to Dumping}pt>0pt%
+\draw[flowyellow, line width=\totwidth{Consumer packaging to Dumping}]
+	([shift={(0,-0.5)}]cpack.east) -- ++(4.75,0)
+	node[labs,pos=0.56,fill=yellow!50!red!20] (TextNode) {\tottext{Consumer packaging to Dumping} t}
+	|- (dump.west);
+\fi%
+
+%%%%% emissions from non-consumer packaging
+\ifdim\totwidth{Non-consumer packaging to Litter}pt>0pt%
+\draw[flowred, line width=\totwidth{Non-consumer packaging to Litter}]
+	([shift={(0,0.3)}]ncpack.east) -- ++(6.25,0)
+	node[labs,pos=.42,fill=red!10] (TextNode) {\tottext{Non-consumer packaging to Litter} t}
+	|- (litt.west);
+\fi%
+
+\ifdim\totwidth{Non-consumer packaging to Dumping}pt>0pt%
+\draw[flowyellow, line width=\totwidth{Non-consumer packaging to Dumping}]
+	([shift={(0,-0.3)}]ncpack.east) -- ++(4.75,0)
+	node[labs,pos=0.56,fill=yellow!50!red!20] (TextNode) {\tottext{Non-consumer packaging to Dumping} t}
+	|- (dump.west);
+\fi%
+
+
+%%%%% emissions from construction
+\ifdim\totwidth{Construction to Soil}pt>0pt%
+\draw[flowgreen, line width=\totwidth{Construction to Soil}]
+	([shift={(0,0.5)}]constr.east) -- ++(4,0)
+	node[labs,pos=.67,fill=mygreen!10] (TextNode) {\tottext{Construction to Soil} t}
+	|- (soil.west);
+\fi%
+
+\ifdim\totwidth{Construction to Litter}pt>0pt%
+\draw[flowred, line width=\totwidth{Construction to Litter}]
+	(constr.east) -- (litt.west)
+	node[labs,pos=.3,fill=red!10] (TextNode) {\tottext{Construction to Litter} t};
+\fi%
+
+\ifdim\totwidth{Construction to Dumping}pt>0pt%
+\draw[flowyellow, line width=\totwidth{Construction to Dumping}]
+	([shift={(0,-0.5)}]constr.east) -- ++(4.75,0)
+	node[labs,pos=0.56,fill=yellow!50!red!20] (TextNode) {\tottext{Construction to Dumping} t}
+	|- (dump.west);
+\fi%
+
+
+\ifdim\totwidth{Construction to Soil (MP)}pt>0pt%
+\draw[flowgreen, line width=\totwidth{Construction to Soil (MP)}]
+	([shift={(0,0.5)}]constr.west) -- ++(-4,0)
+	node[labs,pos=.64,fill=mygreen!10] (TextNode) {\tottext{Construction to Soil (MP)} t}
+	|- (soilMP.east);
+\fi%
+
+\ifdim\totwidth{Construction to Indoor air (MP)}pt>0pt%
+\draw[flowpurple, line width=\totwidth{Construction to Indoor air (MP)}]
+	(constr.west) -- ++(-6.25,0)
+	node[labs,pos=.4,fill=myblue!35!red!10] (TextNode) {\tottext{Construction to Indoor air (MP)} t}
+	|- (indoorairMP.east);
+\fi%
+
+\ifdim\totwidth{Construction to Air (MP)}pt>0pt%
+\draw[flowpurple2, line width=\totwidth{Construction to Air (MP)}]
+	([shift={(0,-0.5)}]constr.west) -- ++(-4.75,0)
+	node[labs,pos=.54,fill=myblue!65!red!10] (TextNode) {\tottext{Construction to Air (MP)} t}
+	|- (airMP.east);
+\fi%
+
+
+%%%%%% emissions from automotive
+\ifdim\totwidth{Automotive to Soil}pt>0pt%
+\draw[flowgreen, line width=\totwidth{Automotive to Soil}]
+	(auto.east) -- ++(4,0)
+	node[labs,pos=.67,fill=mygreen!15] (TextNode) {\tottext{Automotive to Soil} t}
+	|- (soil.west);
+\fi%
+
+
+%%%%% emissions from agriculture
+\ifdim\totwidth{Agriculture to Soil}pt>0pt%
+\draw[flowgreen, line width=\totwidth{Agriculture to Soil}]
+	([shift={(0,0.5)}]agri.east) -- ++(4,0)
+	node[labs,pos=.67,fill=mygreen!10] (TextNode) {\tottext{Agriculture to Soil} t}
+	|- (soil.west);
+\fi%
+
+\ifdim\totwidth{Agriculture to Soil (MP)}pt>0pt%
+\draw[flowgreen, line width=\totwidth{Agriculture to Soil (MP)}]
+	(agri.west) -- ++(-4,0)
+	node[labs,pos=.64,fill=mygreen!10] (TextNode) {\tottext{Agriculture to Soil (MP)} t}
+	|- (soilMP.east);
+\fi%
+
+
+\ifdim\totwidth{Agriculture to Dumping}pt>0pt%
+\draw[flowyellow, line width=\totwidth{Agriculture to Dumping}]
+	(agri.east) -- (dump.west)
+	node[labs,pos=0.3,fill=yellow!50!red!20] (TextNode) {\tottext{Agriculture to Dumping} t};
+\fi%
+
+\ifdim\totwidth{Agriculture to Organic waste collection}pt>0pt%
+\draw[flowgreen2, line width=\totwidth{Agriculture to Organic waste collection}]
+	([shift={(0,-0.5)}]agri.east) -- ++(5.5,0)
+	node[labs,pos=0.48,fill=mygreen!70!black!20] (TextNode) {\tottext{Agriculture to Organic waste collection} t}
+	|- ([shift={(0,1)}]orgcoll.north) -- (orgcoll.north);
+\fi%
+
+
+%%%%% emissions by PCCPs
+\ifdim\totwidth{PCCP to Storm water and wastewater (MP)}pt>0pt%
+\draw[flowblue, line width=\totwidth{PCCP to Storm water and wastewater (MP)}]
+	(pccp.west) -- ++(-5.5,0)
+	node[labs,pos=.45,fill=myblue!10] (TextNode) {\tottext{PCCP to Storm water and wastewater (MP)} t}
+	|- (wwaterMP.east);
+\fi%
+
+
+%%%%%% emissions by hygiene products
+\ifdim\totwidth{Hygiene products to Dumping}pt>0pt%
+\draw[flowyellow, line width=\totwidth{Hygiene products to Dumping}]
+	([shift={(0,0.3)}]hygprod.east) -- ++(4.75,0)
+	node[labs,pos=0.56,fill=yellow!50!red!20] (TextNode) {\tottext{Hygiene products to Dumping} t}
+	|- (dump.west);
+\fi%
+
+\ifdim\totwidth{Hygiene products to Storm water and wastewater}pt>0pt%
+\draw[flowblue, line width=\totwidth{Hygiene products to Storm water and wastewater}]
+	([shift={(0,-0.3)}]hygprod.east) -- (wwater.west) 
+	node[labs,pos=.31,fill=myblue!10] (TextNode) {\tottext{Hygiene products to Storm water and wastewater} t};
+\fi%
+
+
+%%%%% emissions from clothing
+\ifdim\totwidth{Clothing to Dumping}pt>0pt%
+\draw[flowyellow, line width=\totwidth{Clothing to Dumping}]
+	(cloth.east) -- ++(4.75,0)
+	node[labs,pos=0.56,fill=yellow!50!red!20] (TextNode) {\tottext{Clothing to Dumping} t}
+	|- (dump.west);
+\fi%
+
+
+\ifdim\totwidth{Clothing to Storm water and wastewater (MP)}pt>0pt%
+\draw[flowblue, line width=\totwidth{Clothing to Storm water and wastewater (MP)}]
+	([shift={(0,0.5)}]cloth.west) -- ++(-5.5,0)
+	node[labs,pos=.45,fill=myblue!10] (TextNode) {\tottext{Clothing to Storm water and wastewater (MP)} t}
+	|- (wwaterMP.east);
+\fi%
+
+\ifdim\totwidth{Clothing to Indoor air (MP)}pt>0pt%
+\draw[flowpurple, line width=\totwidth{Clothing to Indoor air (MP)}]
+	(cloth.west) --
+	node[labs,pos=.32,fill=myblue!35!red!10] (TextNode) {\tottext{Clothing to Indoor air (MP)} t}
+	(indoorairMP.east);
+\fi%
+
+\ifdim\totwidth{Clothing to Air (MP)}pt>0pt%
+\draw[flowpurple2, line width=\totwidth{Clothing to Air (MP)}]
+	([shift={(0,-0.5)}]cloth.west) -- ++(-4.75,0)
+	node[labs,pos=.54,fill=myblue!65!red!10] (TextNode) {\tottext{Clothing to Air (MP)} t}
+	|- (airMP.east);
+\fi%
+
+
+%%%%% emissions from household textiles
+\ifdim\totwidth{Household textiles to Dumping}pt>0pt%
+\draw[flowyellow, line width=\totwidth{Household textiles to Dumping}]
+	(hhtext.east) -- ++(4.75,0)
+	node[labs,pos=0.56,fill=yellow!50!red!20] (TextNode) {\tottext{Household textiles to Dumping} t}
+	|- (dump.west);
+\fi%
+
+\ifdim\totwidth{Household textiles to Storm water and wastewater (MP)}pt>0pt%
+\draw[flowblue, line width=\totwidth{Household textiles to Storm water and wastewater (MP)}]
+	([shift={(0,0.5)}]hhtext.west) -- ++(-5.5,0)
+	node[labs,pos=.45,fill=myblue!10] (TextNode) {\tottext{Household textiles to Storm water and wastewater (MP)} t}
+	|- (wwaterMP.east);
+\fi%
+
+\ifdim\totwidth{Household textiles to Indoor air (MP)}pt>0pt%
+\draw[flowpurple, line width=\totwidth{Household textiles to Indoor air (MP)}]
+	(hhtext.west) -- ++(-6.25,0)
+	node[labs,pos=.4,fill=myblue!35!red!10] (TextNode) {\tottext{Household textiles to Indoor air (MP)} t}
+	|- (indoorairMP.east);
+\fi%
+
+\ifdim\totwidth{Household textiles to Air (MP)}pt>0pt%
+\draw[flowpurple2, line width=\totwidth{Household textiles to Air (MP)}]
+	([shift={(0,-0.5)}]hhtext.west) -- (airMP.east)
+	node[labs,pos=.32,fill=myblue!65!red!10] (TextNode) {\tottext{Household textiles to Air (MP)} t};
+\fi%
+
+
+%%%%% other emissions
+\ifdim\totwidth{Other products to Soil}pt>0pt%
+\draw[flowgreen, line width=\totwidth{Other products to Soil}]
+	([shift={(0,0.6)}]other.east) -- ++(4,0)
+	node[labs,pos=.67,fill=mygreen!10,yshift=4] (TextNode) {\tottext{Other products to Soil} t}
+	|- (soil.west);
+\fi%
+
+\ifdim\totwidth{Other products to Dumping}pt>0pt%
+\draw[flowyellow, line width=\totwidth{Other products to Dumping}]
+	([shift={(0,0.2)}]other.east) -- ++(4.75,0)
+	node[labs,pos=0.56,fill=yellow!50!red!20,yshift=1] (TextNode) {\tottext{Other products to Dumping} t}
+	|- (dump.west);
+\fi%
+
+\ifdim\totwidth{Other products to On-the-go consumption}pt>0pt%
+\draw[flowgrey2, line width=\totwidth{Other products to On-the-go consumption}]
+	([shift={(0,-.2)}]other.east) -- ++(7,0)
+	node[labs,pos=0.38,fill=white,yshift=-1] (TextNode) {\tottext{Other products to On-the-go consumption} t}
+	|- (otg.west);
+\fi%
+
+\ifdim\totwidth{Other products to Water}pt>0pt%
+\draw[flowblue2, line width=\totwidth{Other products to Water}]
+	([shift={(0,-.6)}]other.east)
+	-| ([shift={(-1.75,0)}]water.west)
+	node[labs,pos=0.09,fill=mydarkblue!10,yshift=-4] (TextNode) {\tottext{Other products to Water} t}
+	-- (water.west);
+\fi%
+
+\ifdim\totwidth{Other products to Organic waste collection}pt>0pt%
+\draw[flowgreen2, line width=\totwidth{Other products to Organic waste collection}]
+	(other.south) -- (orgcoll.north)
+	node[labs,pos=0.2,fill=mygreen!70!black!20] (TextNode) {\tottext{Other products to Organic waste collection} t};
+\fi%
+
+
+\ifdim\totwidth{Other products to Soil (MP)}pt>0pt%
+\draw[flowgreen, line width=\totwidth{Other products to Soil (MP)}]
+	([shift={(0,0.5)}]other.west) -- ++(-4,0)
+	node[labs,pos=.64,fill=mygreen!10] (TextNode) {\tottext{Other products to Soil (MP)} t}
+	|- (soilMP.east);
+\fi%
+
+\ifdim\totwidth{Other products to Storm water and wastewater (MP)}pt>0pt%
+\draw[flowblue, line width=\totwidth{Other products to Storm water and wastewater (MP)}]
+	(other.west) -- ++(-5.5,0)
+	node[labs,pos=.47,fill=myblue!10] (TextNode) {\tottext{Other products to Storm water and wastewater (MP)} t}
+	|- (wwaterMP.east);
+\fi%
+
+\ifdim\totwidth{Other products to Indoor air (MP)}pt>0pt%
+\draw[flowpurple, line width=\totwidth{Other products to Indoor air (MP)}]
+	([shift={(0,-0.5)}]other.west) -- ++(-6.25,0)
+	node[labs,pos=0.42,fill=myblue!35!red!10] (TextNode) {\tottext{Other products to Indoor air (MP)} t}
+	|- (indoorairMP.east);
+\fi%
+
+
+%%%%% whereabouts from Organic waste collection
+\ifdim\totwidth{Organic waste collection to End-of-life}pt>0pt%
+\draw[flowgrey2, line width=\totwidth{Organic waste collection to End-of-life}]
+	(orgcoll.south) -- (empty)
+	node[labs,pos=.4] (TextNode) {\tottext{Organic waste collection to End-of-life} t};
+\fi%
+
+\ifdim\totwidth{Organic waste collection to Compost}pt>0pt%
+\draw[flowgreen2, line width=\totwidth{Organic waste collection to Compost}]
+	(orgcoll.east) -- (comp.west)
+	node[labs,pos=.3,fill=mygreen!70!black!20] (TextNode) {\tottext{Organic waste collection to Compost} t};
+\fi%
+
+\ifdim\totwidth{Organic waste collection to Compost (MP)}pt>0pt%
+\draw[flowgreen2, line width=\totwidth{Organic waste collection to Compost (MP)}]
+	(orgcoll.west) -- (compMP.east)
+	node[labs,pos=.34,fill=mygreen!70!black!20] (TextNode) {\tottext{Organic waste collection to Compost (MP)} t};
+\fi%
+
+\ifdim\totwidth{Compost to Soil}pt>0pt%
+\draw[flowgreen, line width=\totwidth{Compost to Soil}]
+	(comp.east) -- ++(2.75,0)
+	node[labs,pos=.3,fill=mygreen!10] (TextNode) {\tottext{Compost to Soil} t}
+	|- (soil.west);
+\fi%
+
+\ifdim\totwidth{Compost (MP) to Soil (MP)}pt>0pt%
+\draw[flowgreen, line width=\totwidth{Compost (MP) to Soil (MP)}]
+	(compMP.west) -- ++(-2.75,0)
+	node[labs,pos=.3,fill=mygreen!10] (TextNode) {\tottext{Compost (MP) to Soil (MP)} t}
+	|- (soilMP.east);
+\fi%
+
+
+%%%%% whereabouts of OTG
+\ifdim\totwidth{On-the-go consumption to Litter}pt>0pt%
+\draw[flowred, line width=\totwidth{On-the-go consumption to Litter}]
+	(otg.south) --  (litt.north)
+	node[labs,pos=.25,fill=red!10] (TextNode) {\tottext{On-the-go consumption to Litter} t};
+\fi%
+
+\ifdim\totwidth{On-the-go consumption to Waste collection and recycling}pt>0pt%
+\draw[flowgrey2, line width=\totwidth{On-the-go consumption to Waste collection and recycling}]
+	(otg.east) -- ++(2,0)
+	node[labs,pos=.5] (TextNode) {\tottext{On-the-go consumption to Waste collection and recycling} t}
+	|- (empty);
+\fi%
+
+
+%%%%% whereabouts of litter
+\ifdim\totwidth{Litter to Waste collection and recycling}pt>0pt%
+\draw[flowgrey2, line width=\totwidth{Litter to Waste collection and recycling}]
+	([shift={(0,-.5)}]litt.east) -- ++(2,0)
+	node[labs,pos=.5] (TextNode) {\tottext{Litter to Waste collection and recycling} t}
+	|- (empty);
+\fi%
+
+\ifdim\totwidth{Litter to Soil}pt>0pt%
+\draw[flowgreen, line width=\totwidth{Litter to Soil}]
+	([shift={(0,0.5)}]litt.east) -- ++(2.75,0)
+	node[labs,fill=mygreen!10,pos=.3] (TextNode) {\tottext{Litter to Soil} t}
+	|- (soil.west);
+\fi%
+
+\ifdim\totwidth{Litter to Water}pt>0pt%
+\draw[flowblue2, line width=\totwidth{Litter to Water}]
+	(litt.east) -- ++(3.5,0)
+	node[labs,fill=mydarkblue!10,pos=.25] (TextNode) {\tottext{Litter to Water} t}
+	|- (water.west);
+\fi%
+
+\ifdim\totwidth{Litter to Storm water and wastewater}pt>0pt%
+\draw[flowblue, line width=\totwidth{Litter to Storm water and wastewater}]
+	([shift={(1,0)}]litt.south) |- ++(1.5,-0.75) 
+	node[labs,fill=myblue!10,pos=.5] (TextNode) {\tottext{Litter to Storm water and wastewater} t}
+	-- ++(0,-3.75) -| (wwater.north);
+\fi%
+
+
+%%%%% whereabouts dumping
+\ifdim\totwidth{Dumping to Litter}pt>0pt%
+\draw[flowred, line width=\totwidth{Dumping to Litter}]
+	([shift={(-1,0)}]dump.north) -- ([shift={(-1,0)}]litt.south)
+	node[labs,fill=red!10,pos=.3] (TextNode) {\tottext{Dumping to Litter} t};
+\fi%
+
+
+%%%%% whereabouts from storm water and waste water	
+\ifdim\totwidth{Storm water and wastewater to End-of-life}pt>0pt%
+\draw[flowgrey2, line width=\totwidth{Storm water and wastewater to End-of-life}]
+	([shift={(0,-.3)}]wwater.east) -- ++(2,0)
+	node[labs,pos=.5] (TextNode) {\tottext{Storm water and wastewater to End-of-life} t}
+	|- (empty);
+\fi%
+
+\ifdim\totwidth{Storm water and wastewater (MP) to End-of-life}pt>0pt%
+\draw[flowgrey2, line width=\totwidth{Storm water and wastewater (MP) to End-of-life}]
+	([shift={(0,-.5)}]wwaterMP.west) -- ++(-3.5,0)
+	node[labs,pos=.25] (TextNode) {\tottext{Storm water and wastewater (MP) to End-of-life} t}
+	|- (empty);
+\fi%
+
+\ifdim\totwidth{Storm water and wastewater (MP) to Soil (MP)}pt>0pt%
+\draw[flowgreen, line width=\totwidth{Storm water and wastewater (MP) to Soil (MP)}]
+	([shift={(0,0.5)}]wwaterMP.west) -- ++(-2.75,0)
+	node[labs,pos=.3,fill=mygreen!10] (TextNode) {\tottext{Storm water and wastewater (MP) to Soil (MP)} t}
+	|- (soilMP.east);
+\fi%
+
+\ifdim\totwidth{Storm water and wastewater to Water}pt>0pt%
+\draw[flowblue2, line width=\totwidth{Storm water and wastewater to Water}]
+	([shift={(0,0.3)}]wwater.east) -- (water.west)
+	node[labs,pos=.17,fill=mydarkblue!10] (TextNode) {\tottext{Storm water and wastewater to Water} t};
+\fi%
+
+\ifdim\totwidth{Storm water and wastewater (MP) to Water (MP)}pt>0pt%
+\draw[flowblue2, line width=\totwidth{Storm water and wastewater (MP) to Water (MP)}]
+	(wwaterMP.west) -- (waterMP.east)
+	node[labs,pos=.17,fill=mydarkblue!10] (TextNode) {\tottext{Storm water and wastewater (MP) to Water (MP)} t};
+\fi%
+
+
+%%%%% whereabouts from indoor air
+\ifdim\totwidth{Indoor air to Waste collection and recycling}pt>0pt%
+\draw[flowgrey2, line width=\totwidth{Indoor air to Waste collection and recycling}]
+	(indoorairMP.west) -- ++(-3.5,0)
+	node[labs,pos=.25] (TextNode) {\tottext{Indoor air to Waste collection and recycling} t}
+	|- (empty);
+\fi%
+
+\ifdim\totwidth{Indoor air to Storm water and wastewater (MP)}pt>0pt%
+\draw[flowblue, line width=\totwidth{Indoor air to Storm water and wastewater (MP)}]
+	(indoorairMP.north) -- (wwaterMP.south)
+	node[labs,pos=.3,fill=myblue!10] (TextNode) {\tottext{Indoor air to Storm water and wastewater (MP)} t};
+\fi%
+
+\ifdim\totwidth{Indoor air to Air (MP)}pt>0pt%
+\draw[flowpurple2, line width=\totwidth{Indoor air to Air (MP)}]
+	(indoorairMP.south) -- (airMP.north)
+	node[labs,pos=.4,fill=myblue!35!red!10] (TextNode) {\tottext{Indoor air to Air (MP)} t};
+\fi%
+
+
+%%%%% whereabouts from air
+\ifdim\totwidth{Air to Soil (MP)}pt>0pt%
+\draw[flowgreen, line width=\totwidth{Air to Soil (MP)}]
+	([shift={(0,-.3)}]airMP.west) -- ++(-2.75,0)
+	node[labs,pos=.3,fill=mygreen!10] (TextNode) {\tottext{Air to Soil (MP)} t}
+	|- (soilMP.east);
+\fi%
+
+\ifdim\totwidth{Air to Water (MP)}pt>0pt%
+\draw[flowblue2, line width=\totwidth{Air to Water (MP)}]
+	([shift={(0,0.3)}]airMP.west) -- ++(-2,0)
+	node[labs,pos=.4,fill=mydarkblue!10] (TextNode) {\tottext{Air to Water (MP)} t}
+	|- (waterMP.east);
+\fi%

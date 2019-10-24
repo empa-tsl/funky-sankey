@@ -1,0 +1,18 @@
+\input{header}
+
+% For importing data
+\readdef{flow.txt}\myflowdef
+
+\input{dataimportation}
+
+%% For importing data
+\newcommand{\tottext}[1]{\csname#1textPlastic\endcsname}
+\newcommand{\totwidth}[1]{\csname#1widthPlastic\endcsname}
+
+\input{tikzpicture}
+
+\node[font=\Huge](title) at (0,20.9){\textbf{Plastic emissions in Switzerland}};
+%\node[font=\large,text=black!40](title) at (12.3,-4.5){\textbf{\textit{LDPE, HDPE, PP, PS, EPS, PVC, PET}}};
+
+\end{tikzpicture}
+\end{document}

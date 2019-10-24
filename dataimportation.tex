@@ -1,0 +1,28 @@
+% USE listofitems TO DIGEST THE \def APPROPRIATELY
+\setsepchar{;/,}
+\ignoreemptyitems
+
+\readlist*\myflowdata{\myflowdef}
+\foreachitem\i\in\myflowdata[]{%
+  \expandafter\edef\csname\myflowdata[\icnt,1]textLDPE\endcsname{\myflowdata[\icnt,2]}%
+  \expandafter\edef\csname\myflowdata[\icnt,1]textHDPE\endcsname{\myflowdata[\icnt,3]}%
+  \expandafter\edef\csname\myflowdata[\icnt,1]textPP\endcsname{\myflowdata[\icnt,4]}%
+  \expandafter\edef\csname\myflowdata[\icnt,1]textPS\endcsname{\myflowdata[\icnt,5]}%
+  \expandafter\edef\csname\myflowdata[\icnt,1]textEPS\endcsname{\myflowdata[\icnt,6]}%
+  \expandafter\edef\csname\myflowdata[\icnt,1]textPVC\endcsname{\myflowdata[\icnt,7]}%
+  \expandafter\edef\csname\myflowdata[\icnt,1]textPET\endcsname{\myflowdata[\icnt,8]}%
+  \expandafter\edef\csname\myflowdata[\icnt,1]textPlastic\endcsname{\myflowdata[\icnt,9]}%
+  \expandafter\edef\csname\myflowdata[\icnt,1]textAllPE\endcsname{\myflowdata[\icnt,10]}%
+  \expandafter\edef\csname\myflowdata[\icnt,1]textAllPS\endcsname{\myflowdata[\icnt,11]}%
+  \expandafter\edef\csname\myflowdata[\icnt,1]widthLDPE\endcsname{\myflowdata[\icnt,12]}%
+  \expandafter\edef\csname\myflowdata[\icnt,1]widthHDPE\endcsname{\myflowdata[\icnt,13]}%
+  \expandafter\edef\csname\myflowdata[\icnt,1]widthPP\endcsname{\myflowdata[\icnt,14]}%
+  \expandafter\edef\csname\myflowdata[\icnt,1]widthPS\endcsname{\myflowdata[\icnt,15]}%
+  \expandafter\edef\csname\myflowdata[\icnt,1]widthEPS\endcsname{\myflowdata[\icnt,16]}%
+  \expandafter\edef\csname\myflowdata[\icnt,1]widthPVC\endcsname{\myflowdata[\icnt,17]}%
+  \expandafter\edef\csname\myflowdata[\icnt,1]widthPET\endcsname{\myflowdata[\icnt,18]}%
+  \expandafter\edef\csname\myflowdata[\icnt,1]widthPlastic\endcsname{\myflowdata[\icnt,19]}%
+  \expandafter\edef\csname\myflowdata[\icnt,1]widthAllPE\endcsname{\myflowdata[\icnt,20]}%
+  \expandafter\edef\csname\myflowdata[\icnt,1]widthAllPS\endcsname{\myflowdata[\icnt,21]}%
+}
+
